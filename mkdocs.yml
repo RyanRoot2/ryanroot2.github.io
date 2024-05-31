@@ -1,0 +1,49 @@
+site_name: Ryan Root2
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - navigation.sections
+    - navigation.indexes
+    - navigation.expand
+    - navigation.path
+    # Moves table of contents to be like a 'submenu' of the left navi
+    - toc.integrate
+
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+
+  language: en
+
+  palette:
+    # Light Mode
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+      primary: blue
+      accent: deep purple
+    # Dark Mode
+    - scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+      primary: blue
+      accent: deep purple
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition
+  - pymdownx.arithmatex:
+      generic: true
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.mark
+  - attr_list
