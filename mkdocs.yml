@@ -2,13 +2,17 @@ site_name: Ryan Root2
 
 nav:
   - Home: index.md
-  - About: about.md
+  - Resume: resume.md
   - Learning Log:
+      - Overview: learning-log/index.md
       - Encryption: learning-log/encryption.md
       - Hash Algorithms: learning-log/hash-algorithms.md
   - Python:
-      - index.md
-      - spotify.md
+      - Overview: python/index.md
+      - Spotify: python/spotify.md
+  - Strength Science:
+      - Overview: strength-science/index.md
+      - Workout Log: strength-science/workout-log.md
 
 theme:
   name: material
