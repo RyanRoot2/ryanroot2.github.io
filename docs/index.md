@@ -1,5 +1,5 @@
 # Welcome to MkDocs
-
+# py -m mkdocs gh-deploy --force
 For full documentation visit [mkdocs.org](https://www.mkdocs.org).
 
 ## Commands

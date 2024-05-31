@@ -1,4 +1,15 @@
 site_name: Ryan Root2
+
+nav:
+  - Home: index.md
+  - About: about.md
+  - Learning Log:
+      - Encryption: learning-log/encryption.md
+      - Hash Algorithms: learning-log/hash-algorithms.md
+  - Python:
+      - index.md
+      - spotify.md
+
 theme:
   name: material
   features:
