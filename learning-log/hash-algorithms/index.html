@@ -71,6 +71,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#hash-algorithms" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -463,6 +468,19 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Hash Algorithms
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -473,6 +491,67 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-hash-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is a hash function?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-case-storing-a-password" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use case: storing a password
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#an-example-of-a-bad-hash-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      An example of a (bad) hash function
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -677,9 +756,60 @@
                   
 
 
-  <h1>Hash Algorithms</h1>
-
-<p>Hashing</p>
+<h1 id="hash-algorithms">Hash Algorithms</h1>
+<h2 id="introduction">Introduction</h2>
+<h3 id="what-is-a-hash-function">What is a hash function?</h3>
+<p>A hash function, or hash algorithm, is a function that converts an input into a string of bytes, which is often expressed using hexidecimal.
+The result is pseudo-random (seemingly random) and is typically referred to as the hash value.</p>
+<p>Hash functions are commonly used for purposes such as data integrity verification (making sure nothing has changed), storing passwords, and digital signatures.</p>
+<p>It's important to note that hash functions are one-way, it's impossible to get the input back from the output.</p>
+<p>Hash functions have three main properties:</p>
+<ul>
+<li>Deterministic - the same input always gives the same hash value</li>
+<li>Efficient - they are fast to compute</li>
+<li>Avalanche Effect - a small change to the input produces a significantly different output</li>
+</ul>
+<h3 id="use-case-storing-a-password">Use case: storing a password</h3>
+<p>When a user registers for an account, they create a password. Instead of storing that password, the application will use a hash function to
+generate a hash value of the password which is stored instead.</p>
+<p>When a user tries to log in, whatever password they enter will be input into the same hash function and the resultant hash value can be compared to
+the one stored in the database.</p>
+<p>Because of determinism, we can say that if the hash values are the same, the password has been entered correctly.</p>
+<h3 id="an-example-of-a-bad-hash-function">An example of a (bad) hash function</h3>
+<p>Suppose I create an account using the following password: <strong>P7v8kX2a</strong> <br>
+One way to create a hash value of this is to take the ASCII values for each character and add them up.</p>
+<p>Here is how this can be done in Python:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Define the password</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">password</span> <span class="o">=</span> <span class="s2">&quot;P7v8kX2a&quot;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Generate the ASCII values for each character in the password</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">ascii_values</span> <span class="o">=</span> <span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="n">char</span><span class="p">)</span> <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">password</span><span class="p">]</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># Calculate the sum of the ASCII values</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">ascii_sum</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">ascii_values</span><span class="p">)</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1"># Output the ASCII values and the sum</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">ascii_values</span><span class="p">,</span> <span class="n">ascii_sum</span>
+</code></pre></div>
+<p>This will return the following values:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">ASCII</span> <span class="n">values</span><span class="p">:</span> <span class="p">[</span><span class="mi">80</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">118</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">107</span><span class="p">,</span> <span class="mi">88</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">97</span><span class="p">]</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">ASCII</span> <span class="nb">sum</span><span class="p">:</span> <span class="mi">651</span>
+</code></pre></div></p>
+<p>In this case, the value stored in the database would be <strong>651</strong> instead of the password.</p>
+<p>There are a few reasons this is a bad hash function:</p>
+<ol>
+<li><strong>Not Unique</strong>
+    Many combinations of numbers add up to 651 - that means somebody could enter an incorrect password
+    and be granted access to the account. Likewise "ABC" and "CBA" would have the same hash value.
+    Another way of saying this would be to say that the set of possible sums is smaller than the set of possible passwords. <em>6 = 5+1</em>, <em>6 = 4+2</em>, <em>6 = 3+3</em>, etc.</li>
+<li><strong>Deterministic and Predictable</strong>
+    Given a hash value, an attacker could easily reverse-engineer possible combinations of characters that result in that sum. This makes the function vulnerable to brute force attacks.</li>
+<li><strong>No Avalanche Effect</strong>
+    A change to the input does not provide a <em>significant</em> change to the output. In fact, changing the letter "A" to the letter "B" in the input would
+    simply increase the ASCII sum by 1.</li>
+<li><strong>Brute Force Vulnerability</strong>
+    Summing ASCII values is extremely fast and trivial to compute. This allows attackers to generate and compare possible sums almost instantly, drastically reducing the time needed for a brute-force attack. Moreover, the hash value itself can start to reveal information about the password. At the most trivial level, if the ASCII sum is greater than <em>1</em> then the password can't simply be 'A'. If the ASCII sum is greater than <em>127</em> (the maximum ASCII value), the password must be at least two characters in length.</li>
+</ol>
 
 
 
